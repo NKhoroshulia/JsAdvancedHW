@@ -1,0 +1,39 @@
+<!--
+    Разработайте страницу на которой должен быть размещен div с высотой и шириной 25px.
+    Реализуйте обработчик событий таким образом, чтобы при нажатии на кнопки со стрелакми div
+    пермещался в соответствующие стрелками направления на 10 px.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdditionalTask6</title>
+    <script>
+        let left = 0;
+        window.addEventListener('keydown', function (e) {
+            let div = document.getElementsByTagName('div')[0];
+            if (e.keyCode == 39) {
+                left = left +10;
+                div.style.left = left+"px";
+            }
+            else if (e.keyCode == 37) {
+                left = left -10;
+                div.style.left = left+"px";
+            }
+        })
+</script>
+    <style>
+        div{
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: palevioletred;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

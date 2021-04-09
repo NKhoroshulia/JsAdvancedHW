@@ -1,0 +1,32 @@
+<!-- Разработайте JavaScript модуль, который может привязать обработчики событий для элементов с 
+использованием модели DOM level-2, если она доступна или с помощью IE если DOM level 2 
+не поддерживается.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task5.2</title>
+    <script>
+        let Module = {};
+
+        Module.createHandler = function (element, event, hadnler, capture) {
+            if (window.addEventListener){
+                element.addEventListener(event,handler,capture);
+            }
+            else if (window.attachEvent){
+                element.attachEvent('on'+element,event);
+            }
+        }
+
+        Module.createHandler(window,'load',handler,false);
+        function handler() {
+            alert('hello');
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

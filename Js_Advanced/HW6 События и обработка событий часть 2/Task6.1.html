@@ -1,0 +1,42 @@
+<!--
+    Разработайте страницу "текстовый редактор". На странице должно быть размещено поле
+    ввода и кнопка "Сохранить" (фактическое сохранение данных делать не надо). Если
+    пользователь пытается закрыть окно браузера не "сохранив" данные в поле ввода, должно
+    запускатся окно, которое потребует подтверждения операции закрытия окна.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task6.1</title>
+    <script>
+        let flag = false;
+        let text;
+        window.onload = function () {
+            let button = document.getElementById('save');
+            button.addEventListener('click', function () {
+                flag = true;
+            })
+        }
+        window.onbeforeunload = function () {
+            text = document.getElementById('text').value.length;
+            if (!flag && text != 0) {
+                return 'Вы не сохранили данные!';
+            }
+        }
+    </script>
+    <style>
+        #text {
+            width: 500px;
+            height: 300px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <textarea id="text" cols="30" rows="10"></textarea>
+    <input type="button" value="Сохранить" id="save"/>
+</body>
+</html>

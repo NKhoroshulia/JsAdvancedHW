@@ -1,0 +1,25 @@
+<!--Создайте бегущую строку. Пользователь вводит текст в поле ввода и нажимает
+на кнопку. После чего в элементе страницы отображается бегущая строка с введенным текстом.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task3.5</title>
+</head>
+<body>
+    <input id = "value" type = "text"/>
+    <script>
+            document.getElementById("value").onblur = function () {
+            let value = document.getElementById("value").value;
+            var newElement = document.createElement("marquee");
+            newElement.setAttribute("behavior","alternate");
+            newElement.setAttribute("direction","left");
+            newElement.innerHTML = value;
+            document.body.append(newElement);
+            }
+    </script>
+</body>
+</html>

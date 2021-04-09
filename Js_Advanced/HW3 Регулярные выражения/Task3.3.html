@@ -1,0 +1,41 @@
+<!-- создайте приложение, которое от пользователя должно принимать строки в формате
+'10 + 20' или '50 - 6'. При получении такой строки приложение должно отобразить результат
+арифметического действия
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task3.3</title>
+    <script>
+        window.onload = function () {
+            document.getElementById('input').onblur = function () {
+                let str = document.getElementById('input').value;
+                let operation = str.match(/[+*/-]/g)[0];
+                let numberArray = str.split(/\W+/g);
+
+                document.getElementById('output').innerHTML = switCase(numberArray, operation);
+            }
+            function switCase(arr, oper) {
+                let a = parseFloat(arr[0]),b = parseFloat(arr[1]);
+                if (a == 0 || b == 0 && oper == "/") {
+                    return "На ноль делить нельзя!";
+                } else {
+                    switch (oper) {
+                        case "+": return a + b; break;
+                        case "-": return a - b; break;
+                        case "/": return a / b; break;
+                        case "*": return a * b; break;
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <input id = "input">
+    <p id = "output">
+</body>
+</html>

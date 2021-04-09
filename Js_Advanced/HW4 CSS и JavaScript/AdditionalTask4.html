@@ -1,0 +1,51 @@
+<!-- Создайте страницу. Разместите на странице 5 элементов div и кнопку. Создайте CSS файл,
+определите в файле правила, которые зададут всем дивам следующее оформление - высота и ширина
+100рх, float = left  и зеленый цвет фона.
+Создайте сценарий, который будет обрабатывать нажатие по кнопке и менять цвет одного из дивов 
+на красный. Смена цвета должна происходить циклически, при первом нажатии первый div становиться
+красный остальные остаются зелеными, при втором нажатии - все div становятся зелеными, а второй
+красный и т.д-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Additional Task4</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            float: left;
+            background-color: green;
+            color: white;
+            margin: 5px;
+        }
+    </style>
+    <script>
+        let div = document.getElementsByTagName("div");
+        let count = 0;
+        window.onload = function() {
+            document.getElementsByTagName("input")[0].onclick = function() {
+                if (count > 4) {
+                    count = 0;
+                    div[4].style.backgroundColor = "green";
+                }
+                for (let i = 0; i < count; i++) {
+                    div[i].style.backgroundColor = "green";
+                };
+                div[count].style.backgroundColor = "red";
+                count++;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <input type="Button" value="Click"/>
+</body>
+</html>

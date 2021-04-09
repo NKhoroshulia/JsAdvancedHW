@@ -1,0 +1,32 @@
+<!--
+    Создайте пример демонстрирующий назначение метода toString().
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Task4</title>
+</head>
+<body>
+    <script>
+        function Human(name, age){
+            this.Name = name;
+            this.Age = age;
+        }
+
+        // Переопределние метода toString(). Так как каждый объект обладает методом toString,
+        // который вызывается автоматически каждый раз, когда требуется строковое представление объекта,
+        // то мы можем определить перевод объекта в строку.
+
+        Human.prototype.toString = function (){
+            return "Name: " + this.Name + "; Age: " + this.Age + ";<br/>"; 
+        }
+
+        var Alex = new Human("Alex", 36);
+        var Svetlana = new Human("Svetlana", 33);
+
+        document.write(Alex);
+        document.write(Svetlana);
+    </script>
+</body>
+</html>

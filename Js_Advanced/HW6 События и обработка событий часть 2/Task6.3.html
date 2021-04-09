@@ -1,0 +1,30 @@
+<!--
+    Создайте кнопку с надписью "получить скидку". При наведении кнопка должна
+    "убегать" от курсора не давая пользователю нажать на себя
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task6.3</title>
+    <script>
+        window.onload = function () {
+            let btn = document.getElementById('btn');
+            btn.addEventListener('mousemove',runFromMouse)
+            
+            function runFromMouse(e) {
+                let x = e.clientX, y = e.clientY;
+                btn.style.position = 'absolute';
+                btn.style.left = x+15+'px';
+                btn.style.top = y+15+'px';
+            }
+        }
+    </script>
+</head>
+<body>
+    <input id="btn" type="button" value="Получить скидку"/>
+</body>
+</html>

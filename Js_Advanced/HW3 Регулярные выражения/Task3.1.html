@@ -1,0 +1,62 @@
+<!-- Разработайте программу секундомер. Секундомер должен иметь три кнопки "Старт",
+"Стоп", "Сбросить". Секундомер должен выводить время в формате 00:00:00.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task3.1</title>
+    <script>
+        let ms = 0, sec = 0, min =0;
+        window.onload = function () {
+            function count () {
+                if (ms == 00 && sec == 0 && min == 0) {
+                    get('timer').innerHTML = '00:00:00';
+                } else if (ms < 10 && sec < 10) {
+                    get('timer').innerHTML = '0' + min.toString() + ':0' + sec.toString() + ":0" + ms.toString();
+                } else if (sec > 10 && ms < 10) {
+                    get('timer').innerHTML = '0' + min.toString() + ':'+ sec.toString() + ':0' + ms.toString();
+                } else if (sec < 10) {
+                    get('timer').innerHTML = "0" + min.toString() + ":0" + sec.toString() + ":" + ms.toString();
+                } else if(min < 10) {
+                    get('timer').innerHTML = "0" + min.toString() + ':' + sec.toString() + ":" + ms.toString();
+                }
+                ms++;
+                if (ms > 99) {
+                    ms = 0;
+                    sec++;
+                    if(sec > 59) {
+                        sec = 0;
+                        min++;
+                    }
+                }
+            }
+            get("startButton").onclick = function () {
+                intervalHandler = setInterval(count, 0);
+            }
+
+            get("stopButton").onclick = function () {
+                clearInterval(intervalHandler);
+            }
+            get("resetButton").onclick = function () {
+                ms = 0;
+                sec = 0;
+                min = 0;
+                get("timer").innerHTML = "00:00:00";
+            }
+        }
+
+        let get = function (id) {
+            return document.getElementById(id);
+        }
+    </script>
+</head>
+<body>
+    <p id="timer">00:00:00</p>
+    <input id="startButton" type="button" value="Start" />
+    <input id="stopButton" type="button" value="Stop" />
+    <input id="resetButton" type="button" value="Reset" />
+</body>
+</html>

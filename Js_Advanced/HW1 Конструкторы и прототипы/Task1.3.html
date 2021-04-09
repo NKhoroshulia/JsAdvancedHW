@@ -1,0 +1,60 @@
+<!--
+    Разработайте функцию-конструктор, которая будет создавать объект Human (человек), добавьте
+    на свое усмотрение свойства и методы в этот объект. Подумайте, какие методы и свойства следует
+    сделать уровня экземпляра, а какие уровня функции-конструктора.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Task3</title>
+</head>
+<body>
+    <script>
+        function Human(name, brand) {
+            this.Name = name;
+            this.Brand = brand;
+        }
+            
+        Human.prototype.say = function() {
+            document.write(this.Name + " - Какой же автомобиль мне по душе ? <br/>");
+        }
+
+        Human.prototype.talk = function(human) { 
+            document.write(this.Name + " Разговаривает с консультантом - " + human.Name + "<br/>");
+        }
+
+        Human.prototype.toString = function() {
+            return this.Name + " предпочитает " + this.Brand + " " + this.Model + "<br/>";
+        }
+        
+        Human.choose = function() {
+            let series = prompt("Какой серии вы хотите BMW ? ");
+            switch (series) {
+                case "1-series": return " 1-series cost: 30000$"; break;
+                case "3-series": return " 3-series cost: 40000$"; break;
+                case "5-series": return " 5-series cost: 60000$"; break;
+                case "7-series": return " 7-series cost: 75000$"; break;
+                case "X5-series": return " X5-series cost: 85000$"; break;
+                case "X6-series": return " X6-series cost: 100000$"; break;
+                case "1": return " 1-series cost: 30000$"; break;
+                case "3": return " 3-series cost: 40000$"; break;
+                case "5": return " 5-series cost: 60000$"; break;
+                case "7": return " 7-series cost: 75000$"; break;
+                case "X5": return " X5-series cost: 85000$"; break;
+                case "X6": return " X6-series cost: 100000$"; break;
+                default: return " Такой серии нет"; break;
+            }
+        }
+
+        let Nikolay = new Human("Nikolay", "BMW");
+        let Andrey = new Human("Andrey");
+
+        Nikolay.say();
+        Nikolay.talk(Andrey);
+        Nikolay.Model = Human.choose();
+
+        document.write(Nikolay);
+    </script>
+</body>
+</html>

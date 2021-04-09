@@ -1,0 +1,30 @@
+<!--
+    Разработайте страницу которая будет выводить сообщение 
+    "сохранено" - Ctrl+S,
+    "выбрано все" - Ctrl+A,
+    "cохранено все" - Ctrl+shift+S
+-->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Task6.4</title>
+    <script>
+        window.addEventListener('keydown',function(e){
+            let div = document.getElementsByTagName('div')[0];
+            if(e.ctrlKey == true && e.shiftKey==false && e.keyCode == 83){
+                div.innerHTML='Сохранено';
+            }
+            else if(e.ctrlKey == true && e.keyCode == 65){
+                div.innerHTML='Выбрано все';
+            }
+            else if(e.ctrlKey == true && e.shiftKey==true && e.keyCode == 83){
+                div.innerHTML='Сохранено все';
+            }
+        })
+    </script>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

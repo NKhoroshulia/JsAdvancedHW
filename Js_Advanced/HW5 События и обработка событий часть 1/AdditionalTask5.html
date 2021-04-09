@@ -1,0 +1,75 @@
+﻿<!-- Создайте страницу калькулятор
+Разместите на странице два поля ввода и кнопки для арифметических операция над
+данными введеными в поля ввода. Реализуйте данную страницу двумя способами - DOM Level 0 и Level 2-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdditionalTask5</title>
+    <script>
+        window.onload = function () {
+            let a = document.getElementById("a");
+            let b = document.getElementById("b");
+
+            let add = document.getElementById("add");
+            let sub = document.getElementById("sub");
+            let mul = document.getElementById("mul");
+            let div = document.getElementById("div");
+
+            // DOM Level 0
+//            add.onclick = function () {
+//                alert(operation(a.value, b.value, add.value));
+//            }
+//            sub.onclick = function () {
+//                alert(operation(a.value, b.value, sub.value));
+//            }
+//            mul.onclick = function () {
+//                alert(operation(a.value, b.value, mul.value));
+//            }
+//            div.onclick = function () {
+//                alert(operation(a.value, b.value, div.value));
+//            }
+
+            // DOM Level 2
+
+            add.addEventListener("click", function () {
+                alert(operation(a.value, b.value, add.value));
+            }, false)
+            sub.addEventListener("click", function () {
+                alert(operation(a.value, b.value, sub.value));
+            }, false)
+            mul.addEventListener("click", function () {
+                alert(operation(a.value, b.value, mul.value));
+            }, false)
+            div.addEventListener("click", function () {
+                alert(operation(a.value, b.value, div.value));
+            }, false)
+            
+            function operation(a, b, operat) {
+                switch (operat) {
+                    case "+": return parseFloat(a) + parseFloat(b); break;
+                    case "-": return parseFloat(a) - parseFloat(b); break;
+                    case "*": return parseFloat(a) * parseFloat(b); break;
+                    case "/": return parseFloat(a) / parseFloat(b); break;
+                }
+            }
+        }
+    </script>
+    <style>
+        input {
+            float:left;
+        }
+    </style>
+</head>
+<body>
+    <input id="a" type="text" name="name" value="" />
+    <input id="b" type="text" name="name" value="" />
+    <input id="add" type="button" name="name" value="+" />
+    <input id="sub" type="button" name="name" value="-" />
+    <input id="mul" type="button" name="name" value="*" />
+    <input id="div" type="button" name="name" value="/" />
+</body>
+</html>

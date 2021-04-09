@@ -1,0 +1,48 @@
+<!--
+    Создайте функцию конструктор Box (коробка) для создания объекта со свойствами Height (высота),
+    Width (ширина), Depth (глубина) и Material (материал). Также, в объекте должны быть методы Volume -
+    для получения объема и equals() - для сравнения объектов, объемы должны считаться равными, 
+    если содержат одинаковые значения в свойстве Material.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Additional Task1</title>
+</head>
+<body>
+    <script>
+        function Box (height, width, depth, material) {
+            this.Height = height;
+            this.Width = width;
+            this.Depth = depth;
+            this.Material = material;
+            this.Volume = height * width * depth;
+
+            this.equals = function (otherObj) {
+                if (this.Material == otherObj.Material) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            this.toString = function () {
+                return "Высота: " + this.Height + " Длина: " + this.Width + " Глубина: "
+                        + this.Depth + "Материал: " + this.Material + " Объем коробки: "
+                        + this.Volume + "<hr/> "
+            }
+        }
+
+        let b1 = new Box(123, 134, 634, "leather");
+        let b2 = new Box(342, 234, 433, "chrome");
+
+        document.write(b1.toString());
+        document.write(b2.toString());
+
+        let eq = (b1.equals(b2)) ? "Материалы равны" : "Материалы не равны!";
+        document.write(eq);
+
+    </script>
+</body>
+</html>

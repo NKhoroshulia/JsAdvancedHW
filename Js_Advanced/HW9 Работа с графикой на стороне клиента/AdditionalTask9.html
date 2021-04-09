@@ -1,0 +1,42 @@
+<!-- 
+    Создайте страницу с изображениями.
+    Создайте сценарий который выведет адреса всех изображений, которые загруженные на
+    страницу, после чего с интервалом в секунду по очереди каждому изображению добавит 
+    красную рамку.
+-->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>AdditionalTask9</title>
+</head>
+<script>
+    window.onload = function () {
+        let imgs = document.images;
+        let div = document.getElementsByTagName('div')[0];
+        let str = '';
+        for (let i = 0; i < imgs.length; i++) {
+            str += 'Ссылка картинки ' + (i + 1) + ': ' + imgs[i].src + '<br/>';
+            timeout(imgs[i], i);
+        }
+        function timeout(obj, i) {
+            setTimeout(function () {
+                obj.style.border = 'solid 1px red';
+            }, (i + 1) * 1000)
+        }
+        div.innerHTML = str;
+    }
+</script>
+<style>
+    img {
+        width: 300px;
+        height: 300px;
+    }
+</style>
+<body>
+    <img src="img/html.jpg" alt="HTML5"/>
+    <img src="img/css.jpg" alt="CSS3"/>
+    <img src="img/js.png" alt="JavaScript"/>
+    <div></div>
+</body>
+</html>

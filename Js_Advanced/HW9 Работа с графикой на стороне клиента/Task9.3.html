@@ -1,0 +1,21 @@
+<!--
+    Используя элементы canvas, напишите модуль, с помощью которого на странице
+    будет отобр. диаграмма в соответствии с данными переданными массивом в модуль.
+-->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Task9.3</title>
+    <script src="./Task9.3.js"></script>
+    <script>
+        Module.array = [30, 6, 88, 91, 2, 45, 100, 150, 200];
+        window.onload = function () {
+            Module.barChart("barChart",800,400,"red");
+        }
+    </script>
+</head>
+<body>
+<canvas id="barChart"></canvas>
+</body>
+</html>

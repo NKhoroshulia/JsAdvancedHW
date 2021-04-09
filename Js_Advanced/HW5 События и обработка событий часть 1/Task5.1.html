@@ -1,0 +1,72 @@
+<!-- Разработайте сценарий предыдущего примера таким образомб что бы в поля ввода
+    можно было вводить только целочисленные значения. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 5.1</title>
+    <script>
+        window.onload = function () {
+
+            let a = document.getElementById("a");
+            let b = document.getElementById("b");
+
+            let add = document.getElementById("add");
+            let sub = document.getElementById("sub");
+            let mul = document.getElementById("mul");
+            let div = document.getElementById("div");
+
+            add.addEventListener("click", function () {
+                alert(operation(a.value, b.value, add.value));
+            }, false)
+            sub.addEventListener("click", function () {
+                alert(operation(a.value, b.value, sub.value));
+            }, false)
+            mul.addEventListener("click", function () {
+                alert(operation(a.value, b.value, mul.value));
+            }, false)
+            div.addEventListener("click", function () {
+                alert(operation(a.value, b.value, div.value));
+            }, false)
+            function operation(a, b, operat) {
+                switch (operat) {
+                    case "+": return parseFloat(a) + parseFloat(b); break;
+                    case "-": return parseFloat(a) - parseFloat(b); break;
+                    case "*": return parseFloat(a) * parseFloat(b); break;
+                    case "/": return parseFloat(a) / parseFloat(b); break;
+                }
+            }
+
+            let pattern = /\d/;
+
+            a.addEventListener('keypress', function (e) {
+                let str = String.fromCharCode(e.charCode);
+                if (!pattern.test(str)){
+                    e.preventDefault();
+                }
+            })
+            b.addEventListener('keypress', function (e) {
+                let str = String.fromCharCode(e.charCode);
+                if (!pattern.test(str)){
+                    e.preventDefault();
+                }
+            })
+        }
+    </script>
+    <style>
+        input {
+            float:left;
+        }
+    </style>
+</head>
+<body>
+    <input id="a" type="text" name="name" value="" />
+    <input id="b" type="text" name="name" value="" />
+    <input id="add" type="button" name="name" value="+" />
+    <input id="sub" type="button" name="name" value="-" />
+    <input id="mul" type="button" name="name" value="*" />
+    <input id="div" type="button" name="name" value="/" />
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!--Разработайте модуль, который будет содеражать функцию для получения элементов на странице с 
+определенным значением в атрибуте с именем class. Пример использования модуля 
+let arr = MyQuery.FindClass('redButton'); - возвращает массив элементов с атрибуттом class= "redButton"--->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task2.3</title>
+    <script>
+        window.onload = function () {
+            let elements = Module.FindClass('class');
+            alert(elements.length);
+        }
+
+        let Module = {};
+
+        Module.FindClass = function (className) {
+            let childs = document.body.childNodes;
+            array =[],
+            count = 0;
+
+            for (var i = 0; i < childs.length; i++) {
+                if (childs[i].nodeType == 1) {
+                    if(childs[i].className == className) {
+                        array[count] = childs[i];
+                        count++;
+                    }
+                }
+            }
+            return array;
+        }
+    </script>
+</head>
+<body>
+    <p class="myclass"></p>
+    <p class="class"></p>
+    <p class="class"></p>
+    <p class="newclass"></p>
+    <p class="class"></p>
+    <p class="output"></p>
+</body>
+</html>

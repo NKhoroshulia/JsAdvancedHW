@@ -1,0 +1,44 @@
+<!-- Разработайте сценарий, который каждую секунду будет случайным образом менять положение трех
+элементов div. Задайте элементам фиксированную ширину и высоту и запустите сценарий при загрузке
+страницы.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        window.onload= function() {
+            function position() {
+                let x = window.innerWidth, y = window.innerHeight;
+                let div = document.getElementsByTagName('div');
+                for (let i = 0; i<div.length; i++){
+                    div[i].style.left = getRandom(1,x-200)+"px";
+                    div[i].style.top = getRandom(1,y-200)+"px";
+                    div[i].style.backgroundColor = "hsl("+getRandom(0,360)+",75%,50%)";
+                }
+            }
+            setInterval(position,1000);
+        }
+        function getRandom(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+    </script>
+    <style>
+        div{
+            background-color: aqua;
+            width:50px;
+            height: 50px;
+            padding: 5px;
+            margin: 5px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div id="first"></div>
+    <div id="second"></div>
+    <div id="third"></div>
+</body>
+</html>

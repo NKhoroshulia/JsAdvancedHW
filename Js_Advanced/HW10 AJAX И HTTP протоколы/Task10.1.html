@@ -1,0 +1,56 @@
+<!--
+    Разработайте страницу с 2 полями ввода и кнопкой. Пользователь должен вводить
+    в поля вводов целочисленные значения, а нажатие по кнопке должно приводить к 
+    асинхронному запросу на сервер. Запрашивать следует обработчик СalcHandler.ashx,
+    обработчик принимает два post параметра с именами a и b. 
+    Результат, который возвращает обработчик выведите на страницу
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task 1</title>
+    <script>
+        window.addEventListener("load", function () {
+            let a = document.getElementById('a'),
+                b = document.getElementById('b');
+            let pattern = /\d/;
+            // Проверка введенных данных пользователем
+            a.addEventListener('keypress', function (e) {
+                let str = String.fromCharCode(e.charCode);
+                if(!pattern.test(str)){
+                    e.preventDefault();
+                }
+            })
+            b.addEventListener('keypress', function (e) {
+                let str = String.fromCharCode(e.charCode);
+                if(!pattern.test(str)){
+                    e.preventDefault();
+                }
+            })
+
+            let xhr = new XMLHttpRequest();
+
+            document.getElementById("post").addEventListener("click", function () {
+                let valueA = parseFloat(a.value),valueB = parseFloat(b.value);
+                xhr.open("POST", "CalcHandler.ashx");
+
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        document.getElementById("output").innerHTML = "POST " + xhr.responseText;
+                    }
+                }
+
+                xhr.send("a="+valueA+"&b="+valueB);
+            })
+
+        })
+    </script>
+</head>
+<body>
+    <p id="output"></p>
+    <input id="a" type="text"/>b<input id="b" type="text"/>
+    <button id="post">post</button>
+</body>
+</html>

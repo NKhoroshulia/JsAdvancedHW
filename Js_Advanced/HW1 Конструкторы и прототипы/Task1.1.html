@@ -1,0 +1,38 @@
+<!--
+    Создайте функцию-конструктор, которая создает объект со свойством экземпляра, свойством функции-конструктора
+    с методом экземпляра и методом функции-конструктора. Имена выберите произвольно.
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Task1</title>
+    <script>
+        function MyAuto(car, color) {
+                this.car = car;
+                this.color = color; 
+        }
+
+        MyAuto.prototype.automobile = function () {
+            document.write("Автомобиль марки: " + this.car + ", цвет автомобиля " + this.color + "<br />");
+        }
+
+        MyAuto.dreamauto = "BMW";
+
+        MyAuto.staticMethod = function () {
+            document.write("Автомобиль вашей мечты: " + MyAuto.dreamauto + "<br />") 
+        }
+
+        let v1 = new MyAuto("Mercedes-Benz", "white");
+        v1.automobile();
+
+        let v2 = new MyAuto("BMW", "black");
+        v2.automobile();
+
+        MyAuto.staticMethod();
+    </script>
+</head>
+<body>
+</body>
+</html>

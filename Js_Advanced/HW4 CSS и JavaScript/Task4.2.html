@@ -1,0 +1,61 @@
+<!--Создайте страницу для авторизации. На странице должны находиться поля вводов для
+логина и пароля, кнопка "Вход" и checkBox "Запомнить меня". С помощью CSS, который расположен
+в отдельном файле, выровняйте форму для авторизации по центру страницы. Разработайте сценарий, 
+который будет срабатывать по нажатию на кнопку "Вход". Сценарий должен реализовывать следующие 
+поведение: 
+    Если при нажатии на кнопку поля ввода пустые - выводиться сообщение (в теле страницы, не
+    через alert) "Вы не заполнили поля логин и пароль". Также поля вводов должны получить
+    красный фон.
+    Если введен логин admin и пароль 12345, то отобразить пользователю зеленым цветом сообщение
+    "Вы авторизированы".-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task4.2</title>
+    <link rel="stylesheet" href="./Task4.2.css "/>
+    <script>
+        window.onload = function () {
+            let error = document.getElementById("error");
+            let succsess = document.getElementById("succsess");
+            succsess.style.display="none";
+            error.style.display="none";
+            document.getElementById("enter").onclick = function() {
+                let inputs = document.getElementsByName("autoriz");
+                for (let i = 0; i<inputs.length;i++) {
+                    if (inputs[i].value.length == 0) {
+                        inputs[i].style.backgroundColor = "lightcoral";
+                        error.style.display="block";
+                        succsess.style.display="none";
+                    }
+                    else if (inputs[i].value =="admin" && inputs[i+1].value == "12345") {
+                        inputs[i].style.backgroundColor = "greenyellow";
+                        succsess.style.display="block";
+                    }
+                    else {
+                        inputs[i].style.backgroundColor = "greenyellow";
+                        error.style.display="none";
+                    }
+                }
+
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <form>
+            <label>Login</label><input type="text" name="autoriz"/>
+            <label>Password</label><input type="text" name="autoriz"/>
+            <label>Remember Me</label><input type="checkbox"/>
+            <input type="button" id="enter" value="Отправить"/>
+        </form>
+        <span id="error">Вы не заполнили поля логин и пароль</span>
+        <span id="succsess">Вы авторизированы</span>
+    </div>
+</body>
+</html>

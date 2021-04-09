@@ -1,0 +1,51 @@
+<!-- Разработайте страницу, которая будет выводить сумму двух GET параметров a и b.
+Например, если на страницу заходят по адресу, page.html?a=100&b=200, то в теле страницы
+должно отображатся сообщение "сумма 300"-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task3.2</title>
+    <script>
+        function getQueryString() {
+
+            var args = {};                                  
+            var query = location.search.substring(1);       
+            var pairs = query.split("&");                   
+
+            for (var i = 0; i < pairs.length; i++) {
+            
+                var pos = pairs[i].indexOf('=');            
+                if (pos == -1) {                            
+                    continue;                    
+                }
+            
+                var argname = pairs[i].substring(0, pos);   
+                var value = pairs[i].substring(pos + 1);    
+            
+                args[argname] = value;                      
+            
+            }
+
+            return args;
+        }
+
+        // Для теста примера перейдите по URL текущей страницы + ?a=100&b=200
+        function print() {
+            var args = getQueryString();
+            var e = document.createElement("p");
+            
+            e.innerHTML = ` a = ${args.a};
+            b = ${args.b};
+            a + b = ${+args.a + +args.b}`
+            document.body.appendChild(e);
+        }
+    </script>
+</head>
+<body>
+    <input type="button" name="name" value="Read Query Parameters" onclick="print()" />
+</body>
+</html>
